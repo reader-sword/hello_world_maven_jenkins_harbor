@@ -3,12 +3,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-            retry(3){
-                sh 'echo "Hello World"'
-                }
-                sh '''
-                    echo "Multiline shell steps works too"
-                '''
+                echo 'Building'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
             }
         }
     }
