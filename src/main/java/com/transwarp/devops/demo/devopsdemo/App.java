@@ -1,8 +1,5 @@
-package com.mycompany.app;
+package com.transwarp.devops.demo.devopsdemo;
 
-/**
- * Hello world!
- */
 public class App
 {
 
