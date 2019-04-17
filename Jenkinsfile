@@ -32,8 +32,6 @@ pipeline {
                    	docker tag devops-web-test:latest ${DOCKER_REPO_URL}/${BUILDER}/devops-web-test:${IMAGE_TAG}
                    	docker push ${DOCKER_REPO_URL}/${BUILDER}/devops-web-test:${IMAGE_TAG}
                     docker images | grep devops-demo'''
-
-
                 }
             }
         }
