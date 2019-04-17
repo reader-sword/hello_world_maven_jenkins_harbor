@@ -23,17 +23,17 @@ pipeline {
             steps {
                 container('maven') {
                     sh '''startdocker.sh $DOCKER_REPO_URL &'''
-                   	sh 'docker info'
-                   	sh 'mvn -v'
-                   	sh '''chmod a+x build.sh
-                   	./build.sh'''
-                   	cp target/*.war src/docker/
-                   	cd src/docker && docker build . -t devops-web-test:latest
-                   	docker tag devops-web-test:latest ${DOCKER_REPO_URL}/${BUILDER}/devops-web-test:${IMAGE_TAG}
-                   	docker push ${DOCKER_REPO_URL}/${BUILDER}/devops-web-test:${IMAGE_TAG}
-                    docker images | grep devops-demo'''
+                    sh '''chmod +x gradlew && ./gradlew bootRepackage
+                    cp build/libs/*.jar src/docker/
+                    cd src/docker && docker build . -t devops-demo:latest
+                    docker tag devops-demo:latest ${DOCKER_REPO_URL}/${BUILDER}/devops-demo:${IMAGE_TAG}
+                    docker push ${DOCKER_REPO_URL}/${BUILDER}/devops-demo:${IMAGE_TAG}
+                     docker images | grep devops-demo'''
+                    //docker pull ${DOCKER_REPO_URL}/${BUILDER}/devops-demo:${IMAGE_TAG}
+                   
                 }
             }
         }
     }
 }
+
