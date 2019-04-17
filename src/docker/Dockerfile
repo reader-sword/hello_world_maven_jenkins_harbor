@@ -4,7 +4,7 @@ MAINTAINER  <@transwarp>
 ENV TZ "Asia/Shanghai"
 
 VOLUME /tmp
-ADD *.jar  app.jar
-RUN sh -c 'touch /app.jar'
+RUN echo "启动Tomcat服务"
+#RUN sh -c 'touch /app.jar'
 EXPOSE 8080
-ENTRYPOINT exec java $JAVA_OPTS -jar /app.jar
+# ENTRYPOINT exec java $JAVA_OPTS -jar /app.jar
