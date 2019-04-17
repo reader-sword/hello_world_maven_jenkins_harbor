@@ -23,9 +23,7 @@ pipeline {
             steps {
                 container('maven') {
                     sh '''startdocker.sh $DOCKER_REPO_URL &'''
-                    sh '''chmod +x gradlew && ./gradlew bootRepackage
-
-                    docker build . -t devops-demo:latest
+                   docker build . -t devops-demo:latest
                     docker tag devops-demo:latest ${DOCKER_REPO_URL}/${BUILDER}/devops-demo:${IMAGE_TAG}
                     docker push ${DOCKER_REPO_URL}/${BUILDER}/devops-demo:${IMAGE_TAG}
                      docker images | grep devops-demo'''
